@@ -11,9 +11,9 @@ import java.util.List;
 @Service
 public class TestService {
 
-        public final TestDAO testDAO;
+    public final TestDAO testDAO;
 
-        public List<TestDTO> getTestList() {
+    public List<TestDTO> getTestList() {
         return testDAO.getTestList();
     }
 }
