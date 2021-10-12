@@ -48,9 +48,18 @@ public class BoardController {
     // 글 삭제
     // isDeleted : Y로 업데이트 시킴.
     // 요청URL은 DELETE http://localhost:8080/board/{id}
+
     @DeleteMapping(value = "/{id}")
-    public ApiResponse<BoardDTO> updateIsDelBoardById(@PathVariable int id) throws Exception {
-        return boardService.updateIsDelBoardById(id);
+    public ApiResponse<BoardDTO> updateIsDelBoardById(@PathVariable int id,
+                                                      @RequestBody BoardDTO boardDTO) throws Exception {
+        String boardPassword = boardDTO.getPassword();
+        log.debug("request.id=" + id);
+        log.debug("request.password=" + boardPassword);
+        //password가 없을 경우
+        if(boardPassword == null){
+            return new ApiResponse<>(false, "boardPassword is null, please check key name 'password",null);
+        }
+        return boardService.updateIsDelBoardById(id, boardPassword);
     }
 }
 

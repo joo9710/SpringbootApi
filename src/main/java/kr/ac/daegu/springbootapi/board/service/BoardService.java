@@ -84,7 +84,32 @@ public class BoardService {
 
 
     // Board테이블의 isDel 컬럼의 데이터를 'Y'로 업데이트
-    public ApiResponse<BoardDTO> updateIsDelBoardById(int id){
+     /*
+    * DELETE /board/{id} 고쳐서.
+        isDel 컬럼을 업데이트하는
+        비즈니스 로직은 그대로 가져감.
+        패스워드 일치: json response 아래처럼 나오도록
+        {
+            “success”: true,
+            “message”: “success to delete board id {id}”
+        }
+        패스워드 일치하지 않으면
+        아래 json response 나오도록
+        {
+            “success”: false,
+            “message”: “password incorrect in board id {id}”
+            “data”: null
+        }
+    * */
+    public ApiResponse<BoardDTO> updateIsDelBoardById(int id, String boardPassword){
+        // 1. 비번 체크
+        BoardDTO data = boardDAO.getBoardById(id);
+        boolean isPwdMatch = data.getPassword().equals(boardPassword);
+        // 2. 틀리면 예외 메세지 리턴
+        if(!isPwdMatch){
+            return new ApiResponse<>(false, "board password is not match, please check requested board password");
+        }
+        // 3. 맞으면 isDel업데이트
         int updatedRow = boardDAO.updateIsDelBoardById(id);
             if(updatedRow > 0){
                 return new ApiResponse(true, "board id " + id + " is successfully deleted");
