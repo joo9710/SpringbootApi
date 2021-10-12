@@ -1,15 +1,16 @@
 package kr.ac.daegu.springbootapi.board.model;
 
+import kr.ac.daegu.springbootapi.comment.model.CommentDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 public class BoardDTO {
@@ -25,7 +26,9 @@ public class BoardDTO {
     private int replyRootId;
     private int depth;
     private int orderNum;
+    private String isDel;
 
+    private List<CommentDTO> comments = null;
 
     @Override
     public String toString() {
@@ -42,6 +45,8 @@ public class BoardDTO {
                 ", replyRootId=" + replyRootId +
                 ", depth=" + depth +
                 ", orderNum=" + orderNum +
+                ", isDel='" + isDel + '\'' +
+                ", comments=" + comments +
                 '}';
     }
 }

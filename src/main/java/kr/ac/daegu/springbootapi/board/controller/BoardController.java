@@ -32,7 +32,7 @@ public class BoardController {
     }
 
     @PutMapping(value = "/{id}")
-    public String putBoard(@PathVariable int id,
+    public ApiResponse<?> putBoard(@PathVariable int id,
                            @RequestBody BoardDTO boardDTO) throws  Exception {
         log.debug("id" + id); //id가 잘 넘어오는지 확인
         return boardService.putBoard(id, boardDTO);
@@ -53,3 +53,5 @@ public class BoardController {
         return boardService.updateIsDelBoardById(id);
     }
 }
+
+
