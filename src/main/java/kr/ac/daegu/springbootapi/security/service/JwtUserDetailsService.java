@@ -3,7 +3,6 @@ package kr.ac.daegu.springbootapi.security.service;
 import kr.ac.daegu.springbootapi.member.Member;
 import kr.ac.daegu.springbootapi.member.MemberRepository;
 import kr.ac.daegu.springbootapi.member.Role;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;

@@ -2,9 +2,7 @@ package kr.ac.daegu.springbootapi.config;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import kr.ac.daegu.springbootapi.security.service.JwtUserDetailsService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
