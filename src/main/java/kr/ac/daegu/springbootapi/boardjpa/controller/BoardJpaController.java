@@ -33,7 +33,7 @@ public class BoardJpaController {
     }
 
     @PostMapping(value = "/")
-    public ApiResponse<BoardDTO> postBoard(BoardDTO boardDTO){
+    public ApiResponse<BoardDTO> postBoard(@RequestBody BoardDTO boardDTO){
         Board data = boardJpaService.postBoard(boardDTO);
         return new ApiResponse(true, data);
     }
@@ -60,5 +60,12 @@ public class BoardJpaController {
         }
         return boardJpaService.updateIsDelBoardById(id, boardPassword);
     }
+
+    // mission 답글 쓰기를 담당하는 기능 구현.
+    @PostMapping(value = "/reply")
+    public ApiResponse<BoardDTO> postBoardReplyContent(@RequestBody BoardDTO boardDTO){
+        return boardJpaService.postReply(boardDTO);
+    }
+
 
 }
